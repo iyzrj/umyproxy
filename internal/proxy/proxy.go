@@ -70,9 +70,10 @@ func (p *Proxy) startPrint() {
 }
 
 func (p *Proxy) HandleConn(conn net.Conn) {
+	//1.接受客户端联接
 	client := protocol.NewConn(conn)
 	defer client.Close()
-
+	//2.代理与服务端建立一个连接
 	mysqlServ, err := p.Get()
 	if err != nil {
 		log.Printf("get mysql conn err: %+v \n", err)
@@ -81,7 +82,7 @@ func (p *Proxy) HandleConn(conn net.Conn) {
 	p.debugPrintf("get mysql conn")
 	defer p.Put(mysqlServ)
 
-	// 认证
+	// 3.认证
 	if err := mysqlServ.Auth(client); err != nil {
 		log.Printf("mysql auth err: %+v \n", err)
 		return

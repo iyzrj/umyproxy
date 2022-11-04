@@ -44,3 +44,8 @@ mysql 配置增加
 ```
 go build -o umyproxy cmd/umyproxy/main.go 
 ```
+-----
+
+## 附前置知识
+- [TCP网络编程中connect()、listen()和accept()三者之间的关系](https://blog.csdn.net/tennysonsky/article/details/45621341)
+- [MySQL协议分析](https://www.cnblogs.com/davygeek/p/5647175.html)
