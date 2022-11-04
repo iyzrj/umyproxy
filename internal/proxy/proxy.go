@@ -89,7 +89,7 @@ func (p *Proxy) HandleConn(conn net.Conn) {
 	}
 	p.debugPrintf("client auth success")
 
-	// 发送命令
+	// 发送命令 这里是处理具体sql的操作逻辑，proxy直接转发：从mysql client 读到数据，再写到连接里，再将结果返回写回给mysql client
 	for {
 		cmdPacket, err := client.ReadPacket()
 		if err != nil {
